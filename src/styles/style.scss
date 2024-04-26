@@ -1,0 +1,121 @@
+@import './utils/variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #111;
+}
+
+.rings {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__ring {
+    position: relative;
+    width: $ring-size;
+    height: $ring-size;
+    margin: -30px;
+    border-radius: 50%;
+    border: $ring-border-size solid transparent;
+
+    &--one {
+      border-top: $ring-border-size solid $ring-one-color;
+      animation: animate 4s linear infinite;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        border-radius: 50%;
+        width: $ring-center-size;
+        height: $ring-center-size;
+        background: $ring-one-color;
+        box-shadow: 0 0 0 5px rgba($ring-one-color, 0.2),
+        0 0 0 10px rgba($ring-one-color, 0.13),
+        0 0 0 20px rgba($ring-one-color, 0.06),
+        0 0 20px $ring-one-color,
+        0 0 50px $ring-one-color;
+      }
+    }
+
+    &--two {
+      border-top: $ring-border-size solid transparent;
+      border-left: $ring-border-size solid $ring-two-color;
+      animation: animate2 4s linear infinite;
+      animation-delay: -1s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: initial;
+        bottom: 12px;
+        left: 12px;
+        border-radius: 50%;
+        width: $ring-center-size;
+        height: $ring-center-size;
+        background: $ring-two-color;
+        box-shadow: 0 0 0 5px rgba($ring-two-color, 0.2),
+        0 0 0 10px rgba($ring-two-color, 0.13),
+        0 0 0 20px rgba($ring-two-color, 0.06),
+        0 0 20px $ring-two-color,
+        0 0 50px $ring-two-color;
+      }
+    }
+
+    &--three {
+      position: absolute;
+      top: -66.66px;
+      border-top: $ring-border-size solid transparent;
+      border-left: $ring-border-size solid $ring-three-color;
+      animation: animate2 4s linear infinite;
+      animation-delay: -3s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top:initial;
+        bottom: 12px;
+        left: 12px;
+        border-radius: 50%;
+        width: $ring-center-size;
+        height: $ring-center-size;
+        background: $ring-three-color;
+        box-shadow: 0 0 0 5px rgba($ring-three-color, 0.2),
+        0 0 0 10px rgba($ring-three-color, 0.13),
+        0 0 0 20px rgba($ring-three-color, 0.06),
+        0 0 20px $ring-three-color,
+        0 0 50px $ring-three-color;
+      }
+    }
+
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate2 {
+      0% {
+        transform: rotate(360deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
